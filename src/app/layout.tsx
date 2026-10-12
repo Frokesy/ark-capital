@@ -10,6 +10,10 @@ const archivo = Archivo({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "https://ark-capital-black.vercel.app"),
+  ),
   title: {
     default: "Ark Capital",
     template: "%s | Ark Capital",
@@ -19,11 +23,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Ark Capital",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Ark Capital" }],
     title: "Ark Capital",
     description: "Explore Ark Capital and discover the latest company news, insights, and updates.",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
+    images: ["/og-image.png"],
     title: "Ark Capital",
     description: "Explore Ark Capital and discover the latest company news, insights, and updates.",
   },
